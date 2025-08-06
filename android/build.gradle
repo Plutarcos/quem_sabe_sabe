@@ -1,13 +1,18 @@
-allprojects {
+buildscript {
     repositories {
         google()
         mavenCentral()
     }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0'
+    }
 }
 
-buildscript {
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0' // ou maior
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 

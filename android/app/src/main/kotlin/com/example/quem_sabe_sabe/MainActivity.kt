@@ -1,4 +1,4 @@
-package com.example.quem_sabe_sabe
+package com.MilltopLabs.quemsabesabe
 
 import io.flutter.embedding.android.FlutterActivity
 

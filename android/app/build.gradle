@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.quem_sabe_sabe"
+    namespace = "com.MilltopLabs.quemsabesabe"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
