@@ -5,6 +5,12 @@ allprojects {
     }
 }
 
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0' // ou maior
+    }
+}
+
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
