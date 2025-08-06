@@ -1,8 +1,7 @@
 {
-  "name": "Flutter Manual Install Container",
+  "name": "Flutter & Chrome Development Container",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  // Vamos usar o 'postCreateCommand' para instalar tudo manualmente
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git wget unzip clang cmake ninja-build pkg-config libgtk-3-dev && git clone https://github.com/flutter/flutter.git --depth 1 --branch stable /workspaces/flutter-sdk && echo 'export PATH=\"$PATH:/workspaces/flutter-sdk/bin\"' >> ~/.bashrc && /workspaces/flutter-sdk/bin/flutter doctor",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git wget unzip clang cmake ninja-build pkg-config libgtk-3-dev libxss1 libasound2 && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo dpkg -i google-chrome-stable_current_amd64.deb; sudo apt-get install -f -y && rm google-chrome-stable_current_amd64.deb && git clone https://github.com/flutter/flutter.git --depth 1 --branch stable /workspaces/flutter-sdk && echo 'export PATH=\"$PATH:/workspaces/flutter-sdk/bin\"' >> ~/.bashrc && /workspaces/flutter-sdk/bin/flutter doctor",
   "customizations": {
     "vscode": {
       "extensions": [
