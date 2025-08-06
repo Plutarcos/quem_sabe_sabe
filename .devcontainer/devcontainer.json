@@ -1,16 +1,8 @@
 {
-  "name": "Flutter Development Container",
+  "name": "Flutter Manual Install Container",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {
-    "ghcr.io/devcontainers/features/flutter:2": {}
-  },
-  "postCreateCommand": "flutter doctor",
-  "forwardPorts": [9100],
-  "portsAttributes": {
-    "9100": {
-      "label": "Flutter DevTools"
-    }
-  },
+  // Vamos usar o 'postCreateCommand' para instalar tudo manualmente
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git wget unzip clang cmake ninja-build pkg-config libgtk-3-dev && git clone https://github.com/flutter/flutter.git --depth 1 --branch stable /workspaces/flutter-sdk && echo 'export PATH=\"$PATH:/workspaces/flutter-sdk/bin\"' >> ~/.bashrc && /workspaces/flutter-sdk/bin/flutter doctor",
   "customizations": {
     "vscode": {
       "extensions": [
