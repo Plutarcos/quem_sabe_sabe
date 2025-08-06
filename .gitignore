@@ -44,3 +44,10 @@ app.*.map.json
 
 /flutter/
 *.tar.xz
+
+# Arquivos de configuração de ambiente
+.env
+
+# Chave de assinatura do Android
+android/key.properties
+*.jks

@@ -1,0 +1,25 @@
+workflows:
+  android-release-build:
+    name: Android Release Build
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      groups:
+        - credentials # Nome do grupo de variáveis de ambiente
+    scripts:
+      - name: Set up local.properties
+        script: | 
+          echo "flutter.sdk=$FLUTTER_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: | 
+          flutter pub get
+      - name: Build Android App Bundle
+        script: | 
+          flutter build appbundle --release
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+    publishing:
+      # Opcional: Enviar automaticamente para o Google Play
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS # Requer configuração extra
+        track: internal
