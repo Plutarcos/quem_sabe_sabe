@@ -1,0 +1,43 @@
+name: quiz_app
+description: "Um aplicativo de quiz infinito com placar semanal."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Backend
+  supabase_flutter: ^2.5.0
+  
+  # Monetização
+  google_mobile_ads: ^5.1.0
+  purchases_flutter: ^8.10.6
+  
+  # Login Social e Preferências
+  games_services: ^3.0.1
+  shared_preferences: ^2.2.3
+  
+  # Áudio
+  audioplayers: ^6.0.0
+  
+  # Utilitários
+  connectivity_plus: ^6.0.3
+  intl: ^0.18.1
+  font_awesome_flutter: ^10.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  
+  # Descomente e adicione seus assets aqui no futuro
+  # assets:
+  #   - assets/images/
+  #   - assets/audio/
