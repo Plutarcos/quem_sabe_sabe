@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:games_services/games_services.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:quiz_app/services/audio_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,10 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _supabase = Supabase.instance.client;
   final _audioPlayer = AudioPlayer();
-
-  Map<String, dynamic>? _profile;
-  BannerAd? _bannerAd;
-  final bool _isPremium = false; // Futuramente, virá do RevenueCat
+  final AudioService _audioService = AudioService(); // Instância do serviço
 
   @override
   void initState() {
@@ -30,6 +28,18 @@ class _HomePageState extends State<HomePage> {
     _loadBannerAd();
     _initAudio();
   }
+
+  // A função de áudio agora é muito mais simples
+  Future<void> _initAudio() async {
+    // A inicialização do serviço já carrega as preferências
+    await _audioService.init();
+    // Toca a música se não estiver mutada
+    _audioService.playMusic('audio/background_music.mp3');
+  }
+
+  Map<String, dynamic>? _profile;
+  BannerAd? _bannerAd;
+  final bool _isPremium = false; // Futuramente, virá do RevenueCat
 
   @override
   void dispose() {
@@ -53,17 +63,6 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       print("Erro ao carregar perfil: $e");
       // TODO: Lidar com erro (ex: mostrar diálogo e fechar o app)
-    }
-  }
-
-  Future<void> _initAudio() async {
-    final prefs = await SharedPreferences.getInstance();
-    final isMusicMuted = prefs.getBool('music_muted') ?? false;
-
-    if (!isMusicMuted) {
-      await _audioPlayer.setReleaseMode(ReleaseMode.loop);
-      // Certifique-se de ter o arquivo assets/audio/background_music.mp3
-      await _audioPlayer.play(AssetSource('audio/background_music.mp3'));
     }
   }
 
