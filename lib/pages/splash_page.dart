@@ -28,8 +28,9 @@ class _SplashPageState extends State<SplashPage> {
 
     try {
       final playerId = await _authService.signIn();
-      if (playerId == null)
+      if (playerId == null) {
         throw Exception('Não foi possível obter o ID do jogador.');
+      }
 
       final profile = await _authService.getProfile(playerId);
 

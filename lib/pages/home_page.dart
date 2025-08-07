@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   Map<String, dynamic>? _profile;
   BannerAd? _bannerAd;
-  bool _isPremium = false; // Futuramente, virá do RevenueCat
+  final bool _isPremium = false; // Futuramente, virá do RevenueCat
 
   @override
   void initState() {
