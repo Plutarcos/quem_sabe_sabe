@@ -1,25 +1,14 @@
 workflows:
-  android-release-build:
-    name: Android Release Build
-    instance_type: mac_mini_m1
+  build-android:
+    name: Build Android APK
+    max_build_duration: 15
     environment:
       flutter: stable
-      groups:
-        - credentials # Nome do grupo de variáveis de ambiente
+      java: 17
     scripts:
-      - name: Set up local.properties
-        script: | 
-          echo "flutter.sdk=$FLUTTER_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Get Flutter packages
-        script: | 
-          flutter pub get
-      - name: Build Android App Bundle
-        script: | 
-          flutter build appbundle --release
+      - name: Get dependencies
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
     artifacts:
-      - build/app/outputs/bundle/release/*.aab
-    publishing:
-      # Opcional: Enviar automaticamente para o Google Play
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS # Requer configuração extra
-        track: internal
+      - build/app/outputs/flutter-apk/app-release.apk
