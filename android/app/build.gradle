@@ -8,13 +8,13 @@ plugins {
 
 android {
     namespace "com.MilltopLabs.quemsabesabe"
-    compileSdk 35
+    compileSdk 34
     ndkVersion "26.3.11579264"
 
     defaultConfig {
         applicationId "com.MilltopLabs.quemsabesabe"
         minSdk 23
-        targetSdk 35
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
