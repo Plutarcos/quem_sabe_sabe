@@ -38,6 +38,6 @@ flutter:
   uses-material-design: true
   
   # Descomente e adicione seus assets aqui no futuro
-  # assets:
-  #   - assets/images/
-  #   - assets/audio/
+  assets:
+    # - assets/images/
+    - assets/audio/
