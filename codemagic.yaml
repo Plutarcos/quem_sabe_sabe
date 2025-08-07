@@ -10,5 +10,7 @@ workflows:
         script: flutter pub get
       - name: Build APK
         script: flutter build apk --release
+        pre-build:
+          - yes | sdkmanager "platforms;android-35" "build-tools;35.0.0"
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
