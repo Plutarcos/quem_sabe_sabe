@@ -5,9 +5,7 @@ import 'package:quiz_app/pages/placar_page.dart';
 import 'package:quiz_app/pages/quiz_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:games_services/games_services.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:quiz_app/services/audio_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,24 +16,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _supabase = Supabase.instance.client;
-  final _audioPlayer = AudioPlayer();
-  final AudioService _audioService = AudioService(); // Instância do serviço
 
   @override
   void initState() {
     super.initState();
     _loadInitialData();
     _loadBannerAd();
-    _initAudio();
   }
 
   // A função de áudio agora é muito mais simples
-  Future<void> _initAudio() async {
-    // A inicialização do serviço já carrega as preferências
-    await _audioService.init();
-    // Toca a música se não estiver mutada
-    _audioService.playMusic('audio/background_music.mp3');
-  }
 
   Map<String, dynamic>? _profile;
   BannerAd? _bannerAd;
@@ -44,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     _bannerAd?.dispose();
-    _audioPlayer.dispose();
     super.dispose();
   }
 

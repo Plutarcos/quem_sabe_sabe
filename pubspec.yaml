@@ -22,7 +22,7 @@ dependencies:
   shared_preferences: ^2.2.3
   
   # Áudio
-  audioplayers: ^5.2.1
+  #audioplayers: ^5.2.1
   
   # Utilitários
   connectivity_plus: ^6.0.3
